@@ -1,0 +1,21 @@
+.result-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.load-btn {
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  background-color: rgba(33, 150, 243, 1);
+
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 5px;
+}

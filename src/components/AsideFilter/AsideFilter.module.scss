@@ -1,0 +1,106 @@
+.filter {
+  margin-right: 25px;
+  flex: 0 0 250px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  align-self: flex-start;
+
+  &__title {
+    // margin: 0;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+
+    &:checked + .custom-checkbox::before {
+      transform: rotate(45deg) scale(1);
+    }
+
+    &:checked + .custom-checkbox {
+      border-color: #2196f3;
+    }
+
+    &:focus + .custom-checkbox {
+      box-shadow: 0 0 0 1px #5c8ec7, 0 0 5px #84addb85;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 0;
+    cursor: pointer;
+
+    & .custom-checkbox {
+      display: inline-block;
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-color: #fff;
+      border-radius: 2px;
+      border: 1px solid #9abbce;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 7px;
+        width: 5px;
+        height: 10px;
+        border-right: 2px solid #2196f3;
+        border-bottom: 2px solid #2196f3;
+        transform: rotate(45deg) scale(0);
+      }
+    }
+  }
+}
+
+@media (max-width: 1149.99px) {
+  .filter {
+    flex: 0 0 170px;
+    border-radius: 5px;
+    padding: 15px;
+  }
+}
+
+// .filter__option .custom-checkbox {
+//   display: inline-block;
+//   position: relative;
+//   width: 20px;
+//   height: 20px;
+//   margin-right: 10px;
+//   vertical-align: middle;
+//   background-color: #fff;
+//   border-radius: 2px;
+//   border: 1px solid #9abbce;
+// }
+
+// .custom-checkbox::before {
+//   content: '';
+//   position: absolute;
+//   top: 2px;
+//   left: 7px;
+//   width: 5px;
+//   height: 10px;
+//   border-right: 2px solid #2196f3;
+//   border-bottom: 2px solid #2196f3;
+//   transform: rotate(45deg) scale(0);
+// }

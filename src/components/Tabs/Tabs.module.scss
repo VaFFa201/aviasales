@@ -1,0 +1,33 @@
+.tabs {
+  flex: 1 1 auto;
+  display: flex;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+
+  &__option {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    flex-grow: 1;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #dfe5ec;
+    border-collapse: collapse;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &--active {
+      color: #fff;
+      display: block;
+      padding: 15px;
+      background-color: #2196f3;
+      border-color: #2196f3;
+    }
+  }
+}
