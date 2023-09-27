@@ -8,34 +8,6 @@ import * as filterActions from '../../actions/filterActions'
 import styles from './AsideFilter.module.scss'
 
 function AsideFilter({ filters, handleCheckboxChange }) {
-  // const [options, setOptions] = useState(filterOptions)
-
-  // const handleCheckboxChange = (id) => {
-  //   setOptions((prevOptions) => {
-  //     const updatedOptions = prevOptions.map((option) => {
-  //       if (option.id === id) {
-  //         return {
-  //           ...option,
-  //           checked: !option.checked,
-  //         }
-  //       }
-  //       if (id === 0) {
-  //         return {
-  //           ...option,
-  //           checked: !prevOptions[0].checked,
-  //         }
-  //       }
-  //       return option
-  //     })
-  //     if (updatedOptions.slice(1).every((option) => option.checked)) {
-  //       updatedOptions[0].checked = true
-  //     } else if (updatedOptions.some((option) => option.checked)) {
-  //       updatedOptions[0].checked = false
-  //     }
-  //     return updatedOptions
-  //   })
-  // }
-
   const optionsToRender = filters.map((option) => {
     const { id, label, checked } = option
 

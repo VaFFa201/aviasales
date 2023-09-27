@@ -1,6 +1,6 @@
 .card {
   background-color: #fff;
-  flex: 1 1 100%;
+  flex: 1 1 auto;
   padding: 20px;
   margin-bottom: 15px;
 
@@ -18,9 +18,8 @@
     line-height: 24px;
   }
   &__logo {
-    background-color: red;
-    width: 60px;
-    height: 30px;
+    width: 99px;
+    height: 36px;
   }
   &__content {
     display: flex;
