@@ -6,10 +6,11 @@ import * as tabActions from '../../actions/tabActions'
 
 import styles from './Tabs.module.scss'
 
-function Tabs({ tabs, handleTabChange }) {
+function Tabs({ tabs, activeTabId, handleTabChange }) {
   const options = tabs.map((option) => {
-    const { id, label, active } = option
-    const classes = active ? `${styles.tabs__option} ${styles['tabs__option--active']}` : styles.tabs__option
+    const { id, label } = option
+    const classes =
+      id === activeTabId ? `${styles.tabs__option} ${styles['tabs__option--active']}` : styles.tabs__option
 
     return (
       <button
@@ -31,6 +32,7 @@ function Tabs({ tabs, handleTabChange }) {
 const mapStateToProps = (state) => {
   return {
     tabs: state.tabsOptions,
+    activeTabId: state.activeTabId,
   }
 }
 

@@ -7,13 +7,21 @@ import * as filterActions from '../../actions/filterActions'
 
 import styles from './AsideFilter.module.scss'
 
-function AsideFilter({ filters, handleCheckboxChange }) {
+function AsideFilter({ filters, handleCheckboxChange, getActiveFilters }) {
   const optionsToRender = filters.map((option) => {
     const { id, label, checked } = option
 
     return (
       <label key={id} className={styles.filter__option} htmlFor={id}>
-        <input type="checkbox" id={id} checked={checked} onChange={() => handleCheckboxChange(id)} />
+        <input
+          type="checkbox"
+          id={id}
+          checked={checked}
+          onChange={() => {
+            handleCheckboxChange(id)
+            getActiveFilters()
+          }}
+        />
         <span className={styles['custom-checkbox']} />
         {label}
       </label>

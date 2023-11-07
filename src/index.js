@@ -4,12 +4,13 @@ import { Provider } from 'react-redux'
 
 import App from './App'
 import store from './store/store'
+import ConnectionBoundary from './components/ConnectionBoundary/ConnectionBoundary'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
+    <ConnectionBoundary>
       <App />
-    </Provider>
-  </React.StrictMode>
+    </ConnectionBoundary>
+  </Provider>
 )

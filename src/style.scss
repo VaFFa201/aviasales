@@ -1,16 +1,18 @@
 @font-face {
   font-family: 'Open Sans';
-  src: url('../src/fonts/OpenSans-Regular.ttf') format('ttf');
+  src: url('../src/assets/fonts/OpenSans-Regular.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../src/fonts/OpenSans-SemiBold.ttf') format('ttf');
+  src: url('../src/assets/fonts/OpenSans-SemiBold.ttf') format('ttf');
   font-weight: 600;
   font-style: normal;
 }
+
+@import './assets/variables/variables.scss';
 
 html {
   font-family: 'Open Sans', sans-serif;
@@ -19,8 +21,8 @@ html {
 }
 
 body {
-  background-color: #f3f7fa;
-  color: #4a4a4a;
+  background-color: $background-color;
+  color: $secondary-color;
 }
 
 .App {
