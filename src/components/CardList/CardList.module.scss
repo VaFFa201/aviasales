@@ -1,4 +1,7 @@
+@import '../../assets/variables/variables.scss';
+
 .result-wrapper {
+  width: 100%;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -7,9 +10,9 @@
 .load-btn {
   margin-bottom: 25px;
   padding: 15px 20px;
-  background-color: rgba(33, 150, 243, 1);
+  background-color: $primary-interface-color;
 
-  color: #fff;
+  color: $element-background-color;
   text-align: center;
   font-size: 12px;
   line-height: 20px;
@@ -18,4 +21,10 @@
 
   border: none;
   border-radius: 5px;
+}
+
+.warning-text {
+  margin-top: 50px;
+  color: $secondary-color;
+  text-align: center;
 }

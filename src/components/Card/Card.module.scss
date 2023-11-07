@@ -1,5 +1,7 @@
+@import '../../assets/variables/variables.scss';
+
 .card {
-  background-color: #fff;
+  background-color: $element-background-color;
   flex: 1 1 auto;
   padding: 20px;
   margin-bottom: 15px;
@@ -11,7 +13,7 @@
     margin-bottom: 20px;
   }
   &__price {
-    color: #2196f3;
+    color: $primary-interface-color;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -41,7 +43,7 @@
 }
 .col {
   &__header {
-    color: #a0b0b9;
+    color: $secondary-interface-color;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.5px;

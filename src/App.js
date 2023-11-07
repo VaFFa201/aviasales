@@ -6,21 +6,24 @@ import { connect } from 'react-redux'
 import Header from './components/Header'
 import AsideFilter from './components/AsideFilter/AsideFilter'
 import CardList from './components/CardList'
+import ErrorModal from './components/ErrorModal'
 import * as fetchActions from './actions/fetchActions'
 
 import './normalize.scss'
 import './style.scss'
 
-function App({ fetchDataFirst, fetchDataNext, searchId }) {
+// import { fetchDataFirst } from './actions/fetchActions';
+
+function App({ errorModalOn, fetchDataFirst }) {
   useEffect(() => {
     fetchDataFirst()
-    fetchDataNext(searchId)
   }, [])
 
   return (
     <div className="App">
       <Header />
       <main className="main" style={{ display: 'flex' }}>
+        {errorModalOn ? <ErrorModal /> : null}
         <AsideFilter />
         <CardList />
       </main>
@@ -29,7 +32,7 @@ function App({ fetchDataFirst, fetchDataNext, searchId }) {
 }
 
 const mapStateToProps = (state) => ({
-  searchId: state.searchId,
+  errorModalOn: state.errorModalOn,
 })
 
 const mapDispatchToProps = (dispatch) => {

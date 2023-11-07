@@ -1,11 +1,13 @@
 import React from 'react'
 
+import logo from '../../assets/images/Aviasales.svg'
+
 import classes from './Header.module.scss'
 
 function Header() {
   return (
     <header className={classes.header}>
-      <img className={classes.header__logo} src="https://cdn.worldvectorlogo.com/logos/aviasales-4.svg" alt="Logo" />
+      <img className={classes.header__logo} src={logo} alt="Logo" />
     </header>
   )
 }

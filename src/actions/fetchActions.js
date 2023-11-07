@@ -13,6 +13,13 @@ export const fetchDataSuccess = (data) => {
   }
 }
 
+export const fetchDataFirstSuccess = (data) => {
+  return {
+    type: 'FETCH_DATA_FIRST_SUCCESS',
+    payload: data,
+  }
+}
+
 export const fetchDataFailure = (error) => {
   return {
     type: 'FETCH_DATA_FAILURE',
@@ -20,41 +27,56 @@ export const fetchDataFailure = (error) => {
   }
 }
 
-export const fetchSearchId = (data) => {
-  console.log(data)
-  return {
-    type: 'FETCH_SEARCH_ID',
-    payload: data,
+export const errorModalToggle = () => ({ type: 'ERROR_MODAL_TOGGLE' })
+
+export const fetchDataNext = (searchId) => {
+  return async (dispatch) => {
+    dispatch(fetchDataRequest())
+    try {
+      const response = await fetch(`${apiBase}/tickets?searchId=${searchId}`)
+
+      if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`)
+      }
+
+      const body = await response.json()
+      dispatch(fetchDataSuccess(body))
+
+      if (!body.stop) {
+        return dispatch(fetchDataNext(searchId))
+      }
+
+      // if (body.stop) {
+      //   console.log('stop from stop')
+      // }
+
+      return body
+    } catch (error) {
+      dispatch(fetchDataFailure(error))
+      dispatch(errorModalToggle())
+    }
   }
 }
 
 export const fetchDataFirst = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(fetchDataRequest())
-    return fetch(`${apiBase}/search`)
-      .then((response) => response.json())
-      .then((body) => {
-        dispatch(fetchSearchId(body))
-        return body
-      })
-      .then((data) => fetch(`${apiBase}/tickets?searchId=${data.searchId}`))
-      .then((response) => response.json())
-      .then((body) => dispatch(fetchDataSuccess(body)))
-      .catch((error) => dispatch(fetchDataFailure(error)))
-  }
-}
+    try {
+      const response = await fetch(`${apiBase}/search`)
+      if (!response.ok) {
+        throw new Error(`Ошибка HTTP: ${response.status}`)
+      }
+      const body = await response.json()
 
-export const fetchDataNext = (searchId) => {
-  return (dispatch) => {
-    dispatch(fetchDataRequest())
-    return fetch(`${apiBase}/tickets?searchId=${searchId}`)
-      .then((response) => response.json())
-      .then((body) => {
-        dispatch(fetchDataSuccess(body))
-        if (!body.stop) {
-          console.log(body.stop)
-        }
-      })
-      .catch((error) => dispatch(fetchDataFailure(error)))
+      const dataResponse = await fetch(`${apiBase}/tickets?searchId=${body.searchId}`)
+      const dataBody = await dataResponse.json()
+
+      dispatch(fetchDataFirstSuccess(dataBody))
+
+      return dispatch(fetchDataNext(body.searchId))
+    } catch (error) {
+      dispatch(fetchDataFailure(error))
+      dispatch(errorModalToggle())
+    }
   }
 }
